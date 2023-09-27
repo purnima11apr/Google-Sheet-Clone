@@ -25,6 +25,8 @@ for(let i=64 ; i<=90 ; i++){
        cell.contentEditable = "true";     //making div editable
        cell.id = `${String.fromCharCode(i)}${rowNum}` ; //dynamic and unique id for every cell ... example C17 A80 (using template string)
        cell.addEventListener("focus" , onCellFocus)
+
+       
        row.appendChild(cell);
     }
 } 
