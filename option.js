@@ -2,10 +2,50 @@
 
 const activeCellElement = document.getElementById("active-cell");
 const textAlignElements = document.getElementsByClassName("text-align");
+const boldButton = document.getElementById("boldButton");
+const italicButton = document.getElementById("italic");
+//underline button and text align remaining
+
+
 let activeCell = null; //active cell indicates which cell is selected ..initially it is null becuz no cell is selected
+  
+let activeOptionsState;
+
+
+ function toggleButtonsStyle(button, isSelected) { //this function is calling every button in highlightOptionButtonsOnFocus function
+  if (isSelected) {
+    // currently selected cell in the bold state.
+    button.classList.add("active-option");
+  } else {
+   button.classList.remove("active-option");
+   }
+ }
+
+
+function highlightOptionButtonsOnFocus() { //this function is for to know if cell is have to highlight button or not
+
+ 
+   
+  toggleButtonsStyle(boldButton, activeOptionsState.isBoldSelected);  //calling for the know state of cell to have highlight button
+
+
+   toggleButtonsStyle(italicButton, activeOptionsState.isItalicSelected); //for italic button
+   
+ 
+
+  
+
+  
+
+}
 
 //below func will be triggered whenever cell is focused
 function onCellFocus(e) {
+
+  if (activeCell && activeCell.id === e.target.id) {
+    // previously selected cell is equal to the currently selected cell.
+    return;
+  }
     activeCell = e.target;  //update the activeCell
     activeCellElement.innerText = e.target.id;  //showing which is active cell on page
 
@@ -21,6 +61,8 @@ function onCellFocus(e) {
         backgroundColor: computedStyle.backgroundColor,
         fontSize: computedStyle.fontSize,
       };
+
+      highlightOptionButtonsOnFocus();
  }
 
 // FOR BOLD BUTTON
@@ -117,3 +159,6 @@ function onClickBold(boldButton){  //this will triggered when user clicks on bol
       activeOptionsState.backgroundColor = selectedColor;
     }
   }
+
+
+  
