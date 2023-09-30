@@ -1,70 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-    
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Arial|Times New Roman|Verdana|Courier New|MonoSpace|Pacifico|Roboto"
+    />
+  </head>
+  <body>
     <div id="options">
-        <div class="menu">
-            <div id="copy" class="onhover"><i class="fa-regular fa-copy" style="color: #14161a;"></i></div>
-            <div id="cut" class="onhover"><i class="fa-solid fa-scissors" style="color: #14161a;"></i></div>
-            <div id="clipboard" class="onhover"><i class="fa-regular fa-clipboard" style="color: #14161a;"></i></div>
-            <div id="font-fam">
-                <select id="font-select" style="border: none;">
-                    <option value="MonoSpace">MonoSpace</option>
-                    <option value="Pacifico">Pacifico</option>
-                    <option value="Roboto">Roboto</option>
-                </select>
-            </div>
-            <div id="font-size">
-                <select style="border: none;">
-                    <option value="14">14</option>
-                    <option value="16">16</option>
-                    <option value="18">18</option>
-                  </select>
-            </div>
-            <div id="boldButton" class="onhover text-align"  onclick="onClickBold(this)" ><i class="fa-solid fa-b" style="color: #14161a;"></i></div>
-            <div id="italic" class="onhover text-align" onclick="onClickItalic(this) "><i class="fa-solid fa-italic" style="color: #14161a;"></i></div>
-            <div id="underline" class="onhover text-align" onclick="onClickUnderline(this)"><i class="fa-solid fa-underline" style="color: #14161a;"></i></div>
-            <div id="text-left" class=" onhover text-align  active-option"  data-value="left" onclick="onClickTextAlign(this)"><i class="fa-solid fa-align-left" style="color: #14161a;"></i></div>
-            <div id="text-center" class="onhover text-align"  data-value="center" onclick="onClickTextAlign(this)"><i class="fa-solid fa-align-center" style="color: #14161a;"></i></div>
-            <div id="text-right" class="onhover text-align"  data-value="right" onclick="onClickTextAlign(this)"><i class="fa-solid fa-align-right" style="color: #14161a;"></i></div>
-            <div id="color" class="onhover">
-                <i class="fa-solid fa-font"></i>
-                <input
-                onchange="onChangeTextColor(this)"
-                type="color"
-                id="color-picker"
-                style="width: 0; height: 0"/></div>
-            <div id="bg-color" class="onhover"><i class="fa-solid fa-fill-drip"></i>
-                <input
-                onchange="onChangeBackgroundColor(this)"
-                type="color"
-                id="bgcolor-picker"
-                style="width: 0; height: 0"/></div>
-            <div id="import" class="onhover"><i class="fa-solid fa-cloud-arrow-down"></i></div>
-            <div id="export" class="onhover"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+      <div class="menu">
+        <div id="copy" class="onhover">
+          <i class="fa-regular fa-copy" style="color: #14161a"></i>
         </div>
-        <span id="active-cell"> NULL<!--default null--></span>
+        <div id="cut" class="onhover">
+          <i class="fa-solid fa-scissors" style="color: #14161a"></i>
+        </div>
+        <div id="clipboard" class="onhover">
+          <i class="fa-regular fa-clipboard" style="color: #14161a"></i>
+        </div>
+        <div id="font-fam">
+          <select id="font-select" style="border: none">
+            <option value="Arial">Arial</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Courier New">Courier New</option>
+            <option value="MonoSpace">MonoSpace</option>
+            <option value="Pacifico">Pacifico</option>
+            <option value="Roboto">Roboto</option>
+          </select>
+        </div>
+        <div id="font-size">
+          <select id="font-size-select" style="border: none">
+            <option value="14">12</option>
+            <option value="16">14</option>
+            <option value="18">16</option>
+            <option value="14">18</option>
+            <option value="16">20</option>
+          </select>
+        </div>
+        <div
+          id="boldButton"
+          class="onhover text-align"
+          onclick="onClickBold(this)"
+        >
+          <i class="fa-solid fa-b" style="color: #14161a"></i>
+        </div>
+        <div
+          id="italic"
+          class="onhover text-align"
+          onclick="onClickItalic(this) "
+        >
+          <i class="fa-solid fa-italic" style="color: #14161a"></i>
+        </div>
+        <div
+          id="underlined"
+          class="onhover text-align"
+          onclick="onClickUnderline(this)"
+        >
+          <i class="fa-solid fa-underline" style="color: #14161a"></i>
+        </div>
+        <div
+          id="text-left"
+          class="onhover text-align active-option"
+          data-value="left"
+          onclick="onClickTextAlign(this)"
+        >
+          <i class="fa-solid fa-align-left" style="color: #14161a"></i>
+        </div>
+        <div
+          id="text-center"
+          class="onhover text-align"
+          data-value="center"
+          onclick="onClickTextAlign(this)"
+        >
+          <i class="fa-solid fa-align-center" style="color: #14161a"></i>
+        </div>
+        <div
+          id="text-right"
+          class="onhover text-align"
+          data-value="right"
+          onclick="onClickTextAlign(this)"
+        >
+          <i class="fa-solid fa-align-right" style="color: #14161a"></i>
+        </div>
+        <div id="color" class="onhover">
+          <i class="fa-solid fa-font"></i>
+          <input
+            onchange="onChangeTextColor(this)"
+            type="color"
+            id="color-picker"
+            style="width: 0; height: 0"
+          />
+        </div>
+        <div id="bg-color" class="onhover">
+          <i class="fa-solid fa-fill-drip"></i>
+          <input
+            onchange="onChangeBackgroundColor(this)"
+            type="color"
+            id="bgcolor-picker"
+            style="width: 0; height: 0"
+          />
+        </div>
+        <div id="import" class="onhover">
+          <i class="fa-solid fa-cloud-arrow-down"></i>
+        </div>
+        <div id="export" class="onhover">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+        </div>
+      </div>
+      <span id="active-cell"> NULL<!--default null--></span>
     </div>
 
     <main class="container">
-    <div id="header">
-        <p style="min-width: 50px; left: 0; top: 0; position: sticky;  background-color:lightgrey;"></p>
-    </div>
+      <div id="header">
+        <p
+          style="
+            min-width: 50px;
+            left: 0;
+            top: 0;
+            position: sticky;
+            background-color: lightgrey;
+          "
+        ></p>
+      </div>
 
-    <section id="body">
+      <section id="body">
         <!--it has all rows inside it excluding header-->
-    </section>
-</main>
+      </section>
+    </main>
 
-     <script src="./option.js"></script>
+    <script src="./option.js"></script>
     <script src="./script.js"></script>
-    
-</body>
+  </body>
 </html>

@@ -1,10 +1,13 @@
 //Here we manage all the options 
+//only two option button left
 
 const activeCellElement = document.getElementById("active-cell");
 const textAlignElements = document.getElementsByClassName("text-align");
 const boldButton = document.getElementById("boldButton");
 const italicButton = document.getElementById("italic");
-//underline button and text align remaining
+const underlinedButton = document.getElementById("underlined");
+const selectElement = document.getElementById('font-size-select');
+const fontSelectElement = document.getElementById('font-select');
 
 
 let activeCell = null; //active cell indicates which cell is selected ..initially it is null becuz no cell is selected
@@ -32,7 +35,7 @@ function highlightOptionButtonsOnFocus() { //this function is for to know if cel
    toggleButtonsStyle(italicButton, activeOptionsState.isItalicSelected); //for italic button
    
  
-
+   toggleButtonsStyle(underlinedButton, activeOptionsState.isUnderLineSelected);  //for underline button
   
 
   
@@ -55,7 +58,7 @@ function onCellFocus(e) {
         fontFamily: computedStyle.fontFamily,
         isBoldSelected: computedStyle.fontWeight === "600",
         isItalicSelected: computedStyle.fontStyle === "italic",
-        isUnderLineSelected: computedStyle.textDecoration === "underline",
+        isUnderLineSelected: computedStyle.textDecoration === "underline solid rgb(0, 0, 0)",
         textAlign: computedStyle.textAlign,
         textColor: computedStyle.color,
         backgroundColor: computedStyle.backgroundColor,
@@ -101,19 +104,19 @@ function onClickBold(boldButton){  //this will triggered when user clicks on bol
   }
 
 //  FOR UNDERLINE BUTTON
-  function onClickUnderline(underlinedButton) {  //this will triggered when user clicks on underline button
-    underlinedButton.classList.toggle("active-option");
-    if (activeCell) {
-      if (activeOptionsState.isUnderLineSelected) {
-        // if the text is underlined => none
-        activeCell.style.textDecoration = "none";
-      } else {
-        activeCell.style.textDecoration = "underline";
-      }
-      activeOptionsState.isUnderLineSelected =
-        !activeOptionsState.isUnderLineSelected;
+function onClickUnderline(underlinedButton) {
+  underlinedButton.classList.toggle("active-option");
+  if (activeCell) {
+    if (activeOptionsState.isUnderLineSelected) {
+      // if the text is underlined => none
+      activeCell.style.textDecoration = "none";
+    } else {
+      activeCell.style.textDecoration = "underline";
     }
+    activeOptionsState.isUnderLineSelected =
+      !activeOptionsState.isUnderLineSelected;
   }
+}
 
   //FOR TEXT ALIGN
 
@@ -161,4 +164,26 @@ function onClickBold(boldButton){  //this will triggered when user clicks on bol
   }
 
 
+  //FOR FONT SIZE
+  selectElement.addEventListener('change', function () {
+
+    const selectedValue = selectElement.value;
+
+    activeCell.style.fontSize = selectedValue + 'px';
+  });
+
+
+  //FOR FONT FAMILY
+  function onChangeFontFamily(fontFamilySelect) {
+    const selectedFontFamily = fontFamilySelect.value;
+    if (activeCell) {
+        activeCell.style.fontFamily = selectedFontFamily;
+        activeOptionsState.fontFamily = selectedFontFamily;
+    }
+}
+
+fontSelectElement.addEventListener('change', function () {
+    onChangeFontFamily(fontSelectElement);
+
+  });
   
